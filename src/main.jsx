@@ -8,15 +8,18 @@ import Contact from './routes/contact.jsx'
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element: <Root/>,
-    errorElement : <ErrorPage/>
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Contact />,
+      },
+    ],
   },
-  {
-    path: "contacts/:contactId",
-    element: <Contact />,
-  },
-])
+]);
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
